@@ -35,5 +35,11 @@ module.exports = {
         const newUser = req.body
         const oldUser = await user.findOneAndUpdate(userid, newUser)
         res.status(200).json({ succes: true })
+    },
+
+    deleteUser: async(req, res, next) => {
+        const { userid } = req.params
+        await user.findByIdAndDelete(userid)
+        res.status(200).json({ succes: true })
     }
 }
